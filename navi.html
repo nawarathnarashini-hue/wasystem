@@ -1,0 +1,43 @@
+
+
+
+
+<head>
+    <body>
+
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <i class="fas fa-globe-americas"></i>
+                GlobeTrek Adventures
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('packages')">Packages</a></li>
+                <li><a href="#" onclick="showPage('guides')">Travel Guides</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li id="navDashboard" style="display:none"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth">
+                <button class="btn btn-outline" onclick="openModal('login')">Login</button>
+                <button class="btn btn-primary" onclick="openModal('register')">Register</button>
+            </div>
+            <div class="nav-auth" id="navUser" style="display:none">
+                <span id="userName" style="margin-right:10px; font-weight:600;"></span>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+            <div class="mobile-toggle" onclick="toggleMobile()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+   </head>
+   </body>

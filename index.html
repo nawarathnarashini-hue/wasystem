@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobeTrek Adventures - Discover Your Next Adventure</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-americas"></i>
+                GlobeTrek Adventures
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="guides.html">Travel Guides</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="navDashboard" style="display:none"><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-auth" id="navUser" style="display:none">
+                <span id="userName" style="margin-right:10px; font-weight:600;"></span>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+            <div class="mobile-toggle" onclick="toggleMobile()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page-section">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Discover Your Next Adventure</h1>
+                <p>Explore the world's most breathtaking destinations with GlobeTrek Adventures</p>
+                <div class="search-box">
+                    <div class="form-group">
+                        <label>Destination</label>
+                        <input type="text" class="form-control" id="heroDest" placeholder="Where do you want to go?">
+                    </div>
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <select class="form-control" id="heroDuration">
+                            <option value="">Any Duration</option>
+                            <option value="5">3-5 Days</option>
+                            <option value="7">7-10 Days</option>
+                            <option value="14">14+ Days</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Max Price</label>
+                        <select class="form-control" id="heroPrice">
+                            <option value="">Any Price</option>
+                            <option value="500">Under $500</option>
+                            <option value="1000">Under $1,000</option>
+                            <option value="2000">Under $2,000</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="heroSearch()" style="height:46px;">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Destinations</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50k+</h3>
+                    <p>Happy Travelers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9</h3>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>Popular Destinations</h2>
+                <p>Explore our most sought-after travel destinations around the globe</p>
+            </div>
+            <div class="destinations-grid" id="destinationsGrid">
+                <!-- Populated dynamically by script.js -->
+            </div>
+        </div>
+
+        <div class="section" style="background: var(--white); padding: 80px 20px; max-width: 100%;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div class="section-header">
+                    <h2>Featured Tour Packages</h2>
+                    <p>Handpicked experiences for unforgettable memories</p>
+                </div>
+                <div class="packages-grid" id="featuredPackages">
+                    <!-- Populated dynamically by script.js -->
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="packages.html" class="btn btn-primary">View All Packages</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2>Why Choose Us</h2>
+                <p>We make your travel dreams a reality with exceptional service</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Safe Travel</h3>
+                    <p>Your safety is our priority with 24/7 support and verified partners</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tag"></i></div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive rates with no hidden fees and price match guarantee</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock assistance wherever you are in the world</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Expert Guides</h3>
+                    <p>Local experts with deep knowledge of every destination</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials-container section" style="background: #f1f5f9; max-width: 100%;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <div class="section-header">
+                    <h2>What Our Travelers Say</h2>
+                    <p>Real experiences from real adventurers</p>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto; overflow: hidden;">
+                    <div class="testimonials-slider" id="testimonialSlider">
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150" class="testimonial-avatar" alt="Sarah">
+                            <p class="testimonial-text">"The Bali Adventure was absolutely magical! GlobeTrek handled everything perfectly from airport transfers to hotel bookings. Will definitely book again!"</p>
+                            <div class="testimonial-author">Sarah Johnson</div>
+                            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" class="testimonial-avatar" alt="Michael">
+                            <p class="testimonial-text">"Professional service and amazing itinerary. The Sri Lanka Heritage Tour exceeded all expectations. Our guide was incredibly knowledgeable."</p>
+                            <div class="testimonial-author">Michael Chen</div>
+                            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150" class="testimonial-avatar" alt="Emma">
+                            <p class="testimonial-text">"Maldives Escape was a dream come true. The resort selection was perfect and the pricing was better than booking directly. Highly recommended!"</p>
+                            <div class="testimonial-author">Emma Williams</div>
+                            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="newsletter">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get exclusive deals and travel inspiration delivered to your inbox</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing!');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="mainFooter">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:var(--white); margin-bottom:15px;">
+                    <i class="fas fa-globe-americas"></i>
+                    GlobeTrek Adventures
+                </div>
+                <p>Your trusted travel partner based in Negombo, Sri Lanka. Creating unforgettable journeys since 2012.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="guides.html">Travel Guides</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt" style="margin-right:8px;"></i> Negombo, Sri Lanka</li>
+                    <li><i class="fas fa-phone" style="margin-right:8px;"></i> +94 31 222 3456</li>
+                    <li><i class="fas fa-envelope" style="margin-right:8px;"></i> info@globetrek.lk</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GlobeTrek Adventures. All rights reserved. Designed for educational purposes.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

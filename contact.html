@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GlobeTrek Adventures</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-americas"></i>
+                GlobeTrek Adventures
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="guides.html">Travel Guides</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li id="navDashboard" style="display:none"><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div class="nav-auth" id="navUser" style="display:none">
+                <span id="userName" style="margin-right:10px; font-weight:600;"></span>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+            <div class="mobile-toggle" onclick="toggleMobile()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page-section">
+        <div class="about-hero" style="height: 40vh; min-height: 300px;">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Get in touch with our team.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p style="color:var(--gray); margin-bottom:30px;">Have questions about a package? Need a custom itinerary? Our travel experts are here to help.</p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Office Address</h4>
+                        <p>123 Beach Road, Negombo<br>Sri Lanka, 11500</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+94 31 222 3456<br>+94 77 123 4567</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@globetrek.lk<br>bookings@globetrek.lk</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Mon - Sat: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <i class="fas fa-map-marked-alt" style="font-size:3rem; margin-bottom:10px;"></i>
+                    <p>Google Map Integration Area</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send an Inquiry</h3>
+                <div class="alert alert-success" id="contactSuccess">Your message has been sent successfully!</div>
+                <form id="contactForm" onsubmit="handleContact(event)">
+                    <div class="form-row">
+                        <label>Full Name *</label>
+                        <input type="text" class="form-control" id="contactName" required>
+                        <div class="error-message" id="contactNameError">Name is required</div>
+                    </div>
+                    <div class="form-row">
+                        <label>Email Address *</label>
+                        <input type="email" class="form-control" id="contactEmail" required>
+                        <div class="error-message" id="contactEmailError">Valid email is required</div>
+                    </div>
+                    <div class="form-row">
+                        <label>Subject *</label>
+                        <input type="text" class="form-control" id="contactSubject" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Message *</label>
+                        <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        <div class="error-message" id="contactMessageError">Message is required</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="mainFooter">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:var(--white); margin-bottom:15px;">
+                    <i class="fas fa-globe-americas"></i>
+                    GlobeTrek Adventures
+                </div>
+                <p>Your trusted travel partner based in Negombo, Sri Lanka. Creating unforgettable journeys since 2012.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="guides.html">Travel Guides</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt" style="margin-right:8px;"></i> Negombo, Sri Lanka</li>
+                    <li><i class="fas fa-phone" style="margin-right:8px;"></i> +94 31 222 3456</li>
+                    <li><i class="fas fa-envelope" style="margin-right:8px;"></i> info@globetrek.lk</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GlobeTrek Adventures. All rights reserved. Designed for educational purposes.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

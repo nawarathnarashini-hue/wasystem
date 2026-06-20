@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - GlobeTrek Adventures</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-globe-americas"></i>
+                GlobeTrek Adventures
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="guides.html">Travel Guides</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="navDashboard" style="display:none"><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-auth" id="navAuth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary active">Register</a>
+            </div>
+            <div class="nav-auth" id="navUser" style="display:none">
+                <span id="userName" style="margin-right:10px; font-weight:600;"></span>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+            <div class="mobile-toggle" onclick="toggleMobile()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REGISTER PAGE -->
+    <div class="auth-page-container" style="max-width: 500px; margin: 50px auto;">
+        <div class="auth-page-header">
+            <h2>Create Account</h2>
+            <p style="color:var(--gray);">Sign up to begin booking tour packages</p>
+        </div>
+        <div class="alert alert-danger" id="regError">Please fix the errors below</div>
+        <div class="alert alert-success" id="regSuccess">Account created successfully!</div>
+        <form onsubmit="handleRegister(event)">
+            <div class="form-row">
+                <label>Full Name *</label>
+                <input type="text" class="form-control" id="regName" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-row">
+                <label>Email Address *</label>
+                <input type="email" class="form-control" id="regEmail" placeholder="e.g. john@domain.com" required>
+                <div class="error-message" id="regEmailError">Please enter a valid email</div>
+            </div>
+            <div class="form-row">
+                <label>Phone Number</label>
+                <input type="tel" class="form-control" id="regPhone" placeholder="e.g. +94 77 123 4567">
+            </div>
+            <div class="form-row">
+                <label>Password *</label>
+                <input type="password" class="form-control" id="regPassword" placeholder="Minimum 6 characters" required>
+            </div>
+            <div class="form-row">
+                <label>Confirm Password *</label>
+                <input type="password" class="form-control" id="regConfirm" placeholder="Re-enter password" required>
+                <div class="error-message" id="regPassError">Passwords do not match</div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Register</button>
+        </form>
+        <p style="text-align:center; margin-top:20px; color:var(--gray);">
+            Already have an account? <a href="login.html" style="color:var(--primary); font-weight:600; text-decoration:none;">Login here</a>
+        </p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="mainFooter" style="margin-top: 100px;">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color:var(--white); margin-bottom:15px;">
+                    <i class="fas fa-globe-americas"></i>
+                    GlobeTrek Adventures
+                </div>
+                <p>Your trusted travel partner based in Negombo, Sri Lanka. Creating unforgettable journeys since 2012.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="guides.html">Travel Guides</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt" style="margin-right:8px;"></i> Negombo, Sri Lanka</li>
+                    <li><i class="fas fa-phone" style="margin-right:8px;"></i> +94 31 222 3456</li>
+                    <li><i class="fas fa-envelope" style="margin-right:8px;"></i> info@globetrek.lk</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GlobeTrek Adventures. All rights reserved. Designed for educational purposes.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
